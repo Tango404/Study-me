@@ -30,9 +30,15 @@ const Hero = () => {
 					to="learnMore"
 					smooth={true}
 					duration={700}
-					className=" mx-5 hover:cursor-pointer text-sm font-semibold leading-6 text-gray-900"
+					className="mx-5 hover:cursor-pointer text-sm font-semibold leading-6 text-gray-900"
 				>
-					Learn more <span aria-hidden="true">→</span>
+					Learn more{' '}
+					<span
+						className="hidden sm:inline-block"
+						aria-hidden="true"
+					>
+						→
+					</span>
 				</Link>
 			</div>
 			<Link
