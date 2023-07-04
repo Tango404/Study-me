@@ -1,20 +1,74 @@
-import { config } from 'dotenv';
 import { Configuration, OpenAIApi } from 'openai';
-config();
+import dotenv from 'dotenv';
+dotenv.config();
 
 // Create an open ai instance
 function configureOpenAi() {
+	const API_KEY = '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';
 	const configuration = new Configuration({
-		apiKey: process.env.API_KEY,
+		apiKey: API_KEY,
 	});
+
+	console.log(API_KEY);
 
 	const apiConfig = new OpenAIApi(configuration);
 	return apiConfig;
 }
 
-function buildPrompt() {}
+function buildPrompt(topic, numberOfQuestions, learnerLevel, questionType, answersIncluded) {
+	const prompt = `I'm studying the following topic:
+	
+	--- Begin Topic ---
+	${topic}
+	--- End Topic ---
 
-openai.createChatCompletion({
-	model: 'gpt-3.5-turbo',
-	messages: '',
-});
+	I need ${numberOfQuestions} ${questionType} questions, ${answersIncluded ? ' including the correct answer' : ' excluding the correct answer'}. 
+
+	In terms of my knowledge level as a student, I am a ${learnerLevel} level student. Please take this into account with your response.
+
+	You must format your response as CLEAN JSON. Call the possible answers to the question 'options', call the correct answer to the question 'correctAnswer', and call the question 'question'
+	`;
+
+	console.log(prompt);
+	return prompt;
+}
+
+async function chat(topic, numberOfQuestions, learnerLevel, questionType, answersIncluded) {
+	// Setting up the OpenAI instance
+	const openai = configureOpenAi();
+
+	// List of preset messages basically telling the LLM how to act, and the user crafted prompt
+	const messages = [
+		// Tell LLM how to act
+		{
+			role: 'system',
+			content: 'You are a college-level educational assistant, helping students study topics.',
+		},
+		// User Prompt
+		{
+			role: 'user',
+			content: buildPrompt(topic, numberOfQuestions, learnerLevel, questionType, answersIncluded),
+		},
+	];
+
+	try {
+		// Send the messages to the LLM
+		const completion = await openai.createChatCompletion({
+			model: 'gpt-3.5-turbo',
+			messages: messages,
+		});
+
+		let response = JSON.parse(completion.data.choices[0].message.content);
+		response = response.questions;
+		console.log(response);
+	} catch (error) {
+		if (error.response) {
+			console.log(error.response.status);
+			console.log(error.response.data);
+		} else {
+			console.log(error.message);
+		}
+	}
+}
+
+export { configureOpenAi, buildPrompt, chat };

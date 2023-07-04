@@ -1,6 +1,47 @@
+'use client';
 import React from 'react';
+import { useState } from 'react';
+import { chat } from '../app/openai';
 
 const PromptForm = () => {
+	const [formData, setFormData] = useState({
+		topic: 'Dog Breeds',
+		numberOfQuestions: 5,
+		learnerLevel: 'Beginner',
+		questionType: 'True/False',
+		answersIncluded: true,
+	});
+
+	const handleChange = (e) => {
+		// Gets the name field, and value of that name field
+		const { name, value } = e.target;
+		setFormData((prevData) => ({ ...prevData, [name]: value }));
+	};
+
+	const handleSubmit = async (e) => {
+		e.preventDefault();
+		const { topic, numberOfQuestions, learnerLevel, questionType, answersIncluded } = formData;
+
+		chat(topic, numberOfQuestions, learnerLevel, questionType, answersIncluded);
+
+		console.log({
+			topic,
+			numberOfQuestions,
+			learnerLevel,
+			questionType,
+			answersIncluded,
+		});
+
+		e.target.reset();
+		setFormData({
+			topic: 'Dog Breeds',
+			numberOfQuestions: 5,
+			learnerLevel: 'Beginner',
+			questionType: 'True/False',
+			answersIncluded: true,
+		});
+	};
+
 	return (
 		<section
 			id="promptForm"
@@ -10,7 +51,8 @@ const PromptForm = () => {
 			<form
 				id="study-form"
 				method="POST"
-				action="https://httpbin.org/post"
+				onSubmit={handleSubmit}
+				action="#"
 				className="w-full max-w-lg mx-auto"
 			>
 				{/* Topic Section */}
@@ -26,6 +68,8 @@ const PromptForm = () => {
 							className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
 							id="topic"
 							name="topic"
+							placeholder="E.g. Dog Breeds"
+							onChange={handleChange}
 							cols="30"
 							rows="5"
 						></textarea>
@@ -45,8 +89,11 @@ const PromptForm = () => {
 						<input
 							className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
 							id="numberOfQuestions"
+							onChange={handleChange}
 							name="numberOfQuestions"
 							type="number"
+							placeholder="1"
+							min={1}
 						/>
 					</div>
 
@@ -62,6 +109,7 @@ const PromptForm = () => {
 							<select
 								className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
 								id="learnerLevel"
+								onChange={handleChange}
 								name="learnerLevel"
 							>
 								<option value={'Beginner'}>Beginner</option>
@@ -84,7 +132,7 @@ const PromptForm = () => {
 					<div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
 						<label
 							className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-							htmlFor="grid-qType"
+							htmlFor="questionType"
 						>
 							Question Type
 						</label>
@@ -92,6 +140,7 @@ const PromptForm = () => {
 							<select
 								className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
 								id="questionType"
+								onChange={handleChange}
 								name="questionType"
 							>
 								<option value={'True/False'}>True/False</option>
@@ -123,10 +172,11 @@ const PromptForm = () => {
 							<select
 								className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
 								id="answersIncluded"
+								onChange={handleChange}
 								name="answersIncluded"
 							>
-								<option value={'True'}>True</option>
-								<option value={'False'}>False</option>
+								<option value={true}>Yes</option>
+								<option value={false}>No</option>
 							</select>
 							<div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
 								<svg
