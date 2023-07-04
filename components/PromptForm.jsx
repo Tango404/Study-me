@@ -18,13 +18,14 @@ const PromptForm = () => {
 					<div className="w-full px-3">
 						<label
 							className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-							htmlFor="grid-topic"
+							htmlFor="topic"
 						>
 							Topic
 						</label>
 						<textarea
 							className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-							id="grid-topic"
+							id="topic"
+							name="topic"
 							cols="30"
 							rows="5"
 						></textarea>
@@ -37,13 +38,14 @@ const PromptForm = () => {
 					<div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
 						<label
 							className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-							htmlFor="grid-questions"
+							htmlFor="numberOfQuestions"
 						>
 							Number of Questions
 						</label>
 						<input
 							className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-							id="grid-questions"
+							id="numberOfQuestions"
+							name="numberOfQuestions"
 							type="number"
 						/>
 					</div>
@@ -52,18 +54,19 @@ const PromptForm = () => {
 					<div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
 						<label
 							className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-							htmlFor="grid-learner"
+							htmlFor="learnerLevel"
 						>
 							Learner Level
 						</label>
 						<div className="relative">
 							<select
 								className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-								id="grid-learner"
+								id="learnerLevel"
+								name="learnerLevel"
 							>
-								<option>Beginner</option>
-								<option>Intermediate</option>
-								<option>Advanced</option>
+								<option value={'Beginner'}>Beginner</option>
+								<option value={'Intermediate'}>Intermediate</option>
+								<option value={'Advanced'}>Advanced</option>
 							</select>
 							<div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
 								<svg
@@ -88,12 +91,13 @@ const PromptForm = () => {
 						<div className="relative">
 							<select
 								className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-								id="grid-qType"
+								id="questionType"
+								name="questionType"
 							>
-								<option>True/False</option>
-								<option>Multiple Choice</option>
-								<option>Short Answer</option>
-								<option>Fill In The Blank</option>
+								<option value={'True/False'}>True/False</option>
+								<option value={'Multiple Choice'}>Multiple Choice</option>
+								<option value={'Short Answer'}>Short Answer</option>
+								<option value={'Fill In The Blank'}>Fill In The Blank</option>
 							</select>
 							<div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
 								<svg
@@ -111,17 +115,18 @@ const PromptForm = () => {
 					<div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
 						<label
 							className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-							htmlFor="grid-answers"
+							htmlFor="answersIncluded"
 						>
 							Answers Included
 						</label>
 						<div className="relative">
 							<select
 								className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-								id="grid-answers"
+								id="answersIncluded"
+								name="answersIncluded"
 							>
-								<option>True</option>
-								<option>False</option>
+								<option value={'True'}>True</option>
+								<option value={'False'}>False</option>
 							</select>
 							<div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
 								<svg
