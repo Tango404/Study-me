@@ -2,8 +2,10 @@
 import React from 'react';
 import { useState } from 'react';
 import { chat } from '../app/openai';
+import PromptResults from './PromptResults';
+import { Link } from 'react-scroll';
 
-const PromptForm = () => {
+const PromptForm = ({ onFormSubmit }) => {
 	const [formData, setFormData] = useState({
 		topic: 'Dog Breeds',
 		numberOfQuestions: 5,
@@ -18,20 +20,12 @@ const PromptForm = () => {
 		setFormData((prevData) => ({ ...prevData, [name]: value }));
 	};
 
-	const handleSubmit = async (e) => {
+	const handleSubmit = (e) => {
 		e.preventDefault();
-		const { topic, numberOfQuestions, learnerLevel, questionType, answersIncluded } = formData;
 
-		chat(topic, numberOfQuestions, learnerLevel, questionType, answersIncluded);
+		onFormSubmit(formData);
 
-		console.log({
-			topic,
-			numberOfQuestions,
-			learnerLevel,
-			questionType,
-			answersIncluded,
-		});
-
+		// Reset the form, and the actual data
 		e.target.reset();
 		setFormData({
 			topic: 'Dog Breeds',
@@ -45,7 +39,7 @@ const PromptForm = () => {
 	return (
 		<section
 			id="promptForm"
-			className="my-80"
+			className="my-80 mb-0"
 		>
 			<h2 className="head_text text-center p-10">Start Studying!</h2>
 			<form

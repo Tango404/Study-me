@@ -60,7 +60,7 @@ async function chat(topic, numberOfQuestions, learnerLevel, questionType, answer
 
 		let response = JSON.parse(completion.data.choices[0].message.content);
 		response = response.questions;
-		console.log(response);
+		return response;
 	} catch (error) {
 		if (error.response) {
 			console.log(error.response.status);
