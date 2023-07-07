@@ -5,7 +5,7 @@ import { chat } from '../app/openai';
 import PromptResults from './PromptResults';
 import { Link } from 'react-scroll';
 
-const PromptForm = ({ onFormSubmit }) => {
+const PromptForm = ({ onFormSubmit, clearResults }) => {
 	const [formData, setFormData] = useState({
 		topic: 'Dog Breeds',
 		numberOfQuestions: 5,
@@ -24,6 +24,13 @@ const PromptForm = ({ onFormSubmit }) => {
 		e.preventDefault();
 
 		onFormSubmit(formData);
+
+		setTimeout(() => {
+			const loadingSection = document.getElementById('loading');
+			if (loadingSection) {
+				loadingSection.scrollIntoView({ behavior: 'smooth' });
+			}
+		}, 100);
 
 		// Reset the form, and the actual data
 		e.target.reset();
@@ -87,6 +94,7 @@ const PromptForm = ({ onFormSubmit }) => {
 							name="numberOfQuestions"
 							type="number"
 							placeholder="1"
+							max={20}
 							min={1}
 						/>
 					</div>
@@ -184,12 +192,21 @@ const PromptForm = ({ onFormSubmit }) => {
 						</div>
 					</div>
 				</div>
-				<button
-					type="submit"
-					className="hover:cursor-pointer rounded-md blue_btn hover:shadow-xl ease-in-out duration-300 px-3.5 py-2.5 my-5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 w-full text-center"
-				>
-					Submit
-				</button>
+				<div className="flex justify-evenly">
+					<button
+						type="submit"
+						className="hover:cursor-pointer rounded-md blue_btn hover:shadow-xl ease-in-out duration-300 px-3.5 py-2.5 my-5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 w-1/3 text-center"
+					>
+						Submit
+					</button>
+					<button
+						type="reset"
+						onClick={clearResults()}
+						className="hover:cursor-pointer rounded-md green_btn hover:shadow-xl ease-in-out duration-300 px-3.5 py-2.5 my-5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 w-1/3 text-center"
+					>
+						Clear
+					</button>
+				</div>
 			</form>
 		</section>
 	);

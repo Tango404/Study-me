@@ -25,10 +25,14 @@ function buildPrompt(topic, numberOfQuestions, learnerLevel, questionType, answe
 
   I need ${numberOfQuestions} ${questionType} questions, ${answersIncluded} the correct answer. 
 
-  In terms of my knowledge level as a student, I am a ${learnerLevel} level student. Please take this into account with your response.
+  In terms of my knowledge level as a student, I am a ${learnerLevel} level student. 
+  
+  Please take this into account with your response.
 
   You must format your response as CLEAN JSON. Call the possible answers to the question 'options' which is an array of the different options, call the correct answer to the question 'correctAnswer' only include it if the prompt asks you to, 
-  and call the question 'question'
+  and call the question 'question'.
+  
+  You must be consistent within your JSON responses, do not send me responses which aren't JSON.
   `;
 
 	console.log(prompt);
@@ -72,6 +76,7 @@ async function chat(topic, numberOfQuestions, learnerLevel, questionType, answer
 		} else {
 			console.log(error.message);
 		}
+		return error;
 	}
 }
 
