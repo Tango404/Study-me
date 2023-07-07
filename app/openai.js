@@ -1,5 +1,6 @@
 import { Configuration, OpenAIApi } from 'openai';
 import dotenv from 'dotenv';
+import { faChessBishop } from '@fortawesome/free-solid-svg-icons';
 dotenv.config();
 
 // Create an open ai instance
@@ -17,17 +18,18 @@ function configureOpenAi() {
 
 function buildPrompt(topic, numberOfQuestions, learnerLevel, questionType, answersIncluded) {
 	const prompt = `I'm studying the following topic:
-	
-	--- Begin Topic ---
-	${topic}
-	--- End Topic ---
+  
+  --- Begin Topic ---
+  ${topic}
+  --- End Topic ---
 
-	I need ${numberOfQuestions} ${questionType} questions, ${answersIncluded ? ' including the correct answer' : ' excluding the correct answer'}. 
+  I need ${numberOfQuestions} ${questionType} questions, ${answersIncluded} the correct answer. 
 
-	In terms of my knowledge level as a student, I am a ${learnerLevel} level student. Please take this into account with your response.
+  In terms of my knowledge level as a student, I am a ${learnerLevel} level student. Please take this into account with your response.
 
-	You must format your response as CLEAN JSON. Call the possible answers to the question 'options', call the correct answer to the question 'correctAnswer', and call the question 'question'
-	`;
+  You must format your response as CLEAN JSON. Call the possible answers to the question 'options' which is an array of the different options, call the correct answer to the question 'correctAnswer' only include it if the prompt asks you to, 
+  and call the question 'question'
+  `;
 
 	console.log(prompt);
 	return prompt;
@@ -57,6 +59,8 @@ async function chat(topic, numberOfQuestions, learnerLevel, questionType, answer
 			model: 'gpt-3.5-turbo',
 			messages: messages,
 		});
+
+		console.log(completion.data.choices[0].message.content);
 
 		let response = JSON.parse(completion.data.choices[0].message.content);
 		response = response.questions;

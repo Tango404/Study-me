@@ -11,7 +11,7 @@ const PromptForm = ({ onFormSubmit }) => {
 		numberOfQuestions: 5,
 		learnerLevel: 'Beginner',
 		questionType: 'True/False',
-		answersIncluded: true,
+		answersIncluded: 'including',
 	});
 
 	const handleChange = (e) => {
@@ -169,8 +169,8 @@ const PromptForm = ({ onFormSubmit }) => {
 								onChange={handleChange}
 								name="answersIncluded"
 							>
-								<option value={true}>Yes</option>
-								<option value={false}>No</option>
+								<option value={'including'}>Yes</option>
+								<option value={'excluding'}>No</option>
 							</select>
 							<div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
 								<svg
