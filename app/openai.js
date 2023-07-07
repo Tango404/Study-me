@@ -1,16 +1,17 @@
 import { Configuration, OpenAIApi } from 'openai';
 import dotenv from 'dotenv';
-import { faChessBishop } from '@fortawesome/free-solid-svg-icons';
-dotenv.config();
+import path from 'path';
+
+const envPath = path.resolve(process.cwd(), '.env');
+dotenv.config({ path: envPath });
+
+const openAIKey = process.env.NEXT_PUBLIC_API_KEY;
 
 // Create an open ai instance
 function configureOpenAi() {
-	const API_KEY = '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';
 	const configuration = new Configuration({
-		apiKey: API_KEY,
+		apiKey: openAIKey,
 	});
-
-	console.log(API_KEY);
 
 	const apiConfig = new OpenAIApi(configuration);
 	return apiConfig;
