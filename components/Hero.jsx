@@ -17,7 +17,7 @@ const Hero = () => {
 				<span className="blue_gradient text-center">Pass all your future exams</span>
 			</h1>
 			<p className="desc text-center">Study Me is an open-source tool which utilizes the OpenAI API to generate study questions based on user input</p>
-			<div className=" my-10">
+			<div className="my-10">
 				<Link
 					to="promptForm"
 					smooth={true}
@@ -42,7 +42,7 @@ const Hero = () => {
 				</Link>
 			</div>
 			<Link
-				to="learnMore"
+				to="promptForm"
 				smooth={true}
 				duration={700}
 				className=" hover:cursor-pointer"
