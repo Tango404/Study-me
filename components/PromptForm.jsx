@@ -46,9 +46,11 @@ const PromptForm = ({ onFormSubmit, clearResults }) => {
 	return (
 		<section
 			id="promptForm"
-			className="my-80 mb-0"
+			className="my-80 mb-20 "
 		>
-			<h2 className="head_text text-center p-10">Start Studying!</h2>
+			<h2 className="head_text text-center p-10">
+				Start <span className="green_gradient"> Studying! </span>
+			</h2>
 			<form
 				id="study-form"
 				method="POST"

@@ -12,8 +12,38 @@ const LearnMore = () => {
 			id="learnMore"
 			className="my-80"
 		>
+			<div className="my-40 ">
+				<h2 className="head_text text-center p-10">
+					How to Utilize <span className="blue_gradient">Study Me</span>
+				</h2>
+				<div className="flex flex-col gap-4 p-4">
+					<div className="flex items-start p-3 md:p-4 blue_btn rounded-lg hover:shadow-xl cursor-pointer transition ease-in-out">
+						<div className="hidden md:flex w-8 h-8 md:w-10 md:h-10 bg-white rounded-full items-center justify-center text-blue-500 font-bold text-xl md:text-2xl shadow-md">1</div>
+						<div className="ml-4">
+							<h3 className="text-lg font-semibold mb-2 text-white">Step 1</h3>
+							<p className="text-sm text-white">Fill out the prompt form. Be sure to provide accurate information for the best results!</p>
+						</div>
+					</div>
+					<div className="flex items-start p-3 md:p-4 blue_btn rounded-lg hover:shadow-xl cursor-pointer transition ease-in-out">
+						<div className="hidden md:flex w-8 h-8 md:w-10 md:h-10 bg-white rounded-full items-center justify-center text-blue-500 font-bold text-xl md:text-2xl shadow-md">2</div>
+						<div className="ml-4">
+							<h3 className="text-lg font-semibold mb-2 text-white">Step 2</h3>
+							<p className="text-sm text-white">Hit the submit button and wait for the questions to be generated. This process can take some time based on the number of questions you request.</p>
+						</div>
+					</div>
+					<div className="flex items-start p-3 md:p-4 blue_btn rounded-lg hover:shadow-xl cursor-pointer transition ease-in-out">
+						<div className="hidden md:flex w-8 h-8 md:w-10 md:h-10 bg-white rounded-full items-center justify-center text-blue-500 font-bold text-xl md:text-2xl shadow-md">3</div>
+						<div className="ml-4">
+							<h3 className="text-lg font-semibold mb-2 text-white">Step 3</h3>
+							<p className="text-sm text-white">Ace your exams! Once the questions have loaded, you can start studying and ace your exams!</p>
+						</div>
+					</div>
+				</div>
+			</div>
 			<div>
-				<h2 className="head_text text-center p-10">Trusted and Loved By Many</h2>
+				<h2 className="head_text text-center p-10">
+					Trusted and <span className="red_gradient">Loved</span> By Many
+				</h2>
 			</div>
 			<div className="bg-transparent py-24 sm:py-20">
 				<div className="mx-auto max-w-7xl px-6 lg:px-8">
