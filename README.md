@@ -1,3 +1,7 @@
+<h1 align="center">Study Me</h1>
+<p align="center">An app powered by the OpenAI api allowing users to submit information and recieve study questions.</p>
+
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
