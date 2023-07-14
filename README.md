@@ -2,21 +2,39 @@
 <p align="center">An app powered by the OpenAI api allowing users to submit information and recieve study questions.</p>
 
 
-# Contents
-<ul>
-  <li>Why?</li>
-  <li>Languages / Frameworks / Libraries</li>
-  <li>Installation (Local Run)</li>
-  <li>Contribution</li>
-</ul>
+## Contents
+  - [Why?](#why)
+  - [Tech Used/Prerequisites](#tech-used)
+  - [Installation (to run locally)](#installation-local-run)
+  - [Want to Contribute?](#contribution)
 
-# Why?
-<ul>
-  <li>To help students study and ace their future exams</li>
-  <li>Generate question in an easy and efficient manner</li>
-</ul>
+## Why?
+- To help students study and ace their future exams
+- Generate question in an easy and efficient manner
 
-# Languages / Frameworks / Libraries 
+## Tech Used
 [![My Skills](https://skillicons.dev/icons?i=html,css,js,next,react,tailwind)](https://skillicons.dev)
 
-# Installation (Local Run)
+## Installation (Local Run)
+1. Clone the repository `git clone https://github.com/Tango404/Study-me.git`
+   
+3. Install all dependancies and packages `npm install`
+   
+4. Create a `.env` file in the root of the directory, and add a variable called `OPENAI_API_KEY=YOURAPIKEY`. You will need to visit https://openai.com/pricing because this is not a free API, however it is very cheap on small scale use
+   
+5. Start the application `npm run dev`
+   
+6. Naviagate to `localhost:3000` to view the webpage
+
+## Contribution
+1. Clone the repository `git clone https://github.com/Tango404/Study-me.git`
+   
+2. Improve the application by:
+   - Adding a feature
+   - Resolving an issue
+   - Refactoring code
+   - Fixing bugs
+     
+3. Test the new change locally
+   
+4. If all is well, create a pull request with a detailed explanation of the change(s)
