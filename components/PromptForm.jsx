@@ -76,7 +76,7 @@ const PromptForm = ({ onFormSubmit, clearResults }) => {
 							cols="30"
 							rows="5"
 						></textarea>
-						<p className="text-gray-600 text-xs italic">Make it as long and as crazy as you'd like</p>
+						<p className="text-gray-600 text-xs italic">Make it as long and as crazy as you would like</p>
 					</div>
 				</div>
 
