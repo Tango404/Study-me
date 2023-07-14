@@ -20,7 +20,7 @@
    
 3. Install all dependancies and packages `npm install`
    
-4. Create a `.env` file in the root of the directory, and add a variable called `OPENAI_API_KEY=YOURAPIKEY`. You will need to visit https://openai.com/pricing because this is not a free API, however it is very cheap on small scale use
+4. Create a `.env` file in the root of the directory, and add a variable called `NEXT_PUBLIC_API_KEY=YOURAPIKEY`. You will need to visit https://openai.com/pricing because this is not a free API, however it is very cheap on small scale use
    
 5. Start the application `npm run dev`
    
